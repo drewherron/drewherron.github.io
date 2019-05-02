@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Paytone+One" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
     <title>Drew Herron</title>
     <style type="text/css">
         html {
@@ -587,6 +587,7 @@
         });
         // Smooth scroll to bottom
         $(document).ready(function() {
+            removeHash()
             $("a").on('click', function(event) {
                 if (this.hash !== "") {
                     event.preventDefault();
@@ -594,12 +595,16 @@
                     $('html, body').animate({
                         scrollTop: $(hash).offset().top
                     }, 4000, function() {
-
                         window.location.hash = hash;
+                        removeHash()
                     });
                 }
             });
         });
+        function removeHash() {
+            history.pushState("", document.title, window.location.pathname +
+                window.location.search);
+        }
     </script>
 </body>
 
