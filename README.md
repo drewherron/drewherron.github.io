@@ -2,4 +2,4 @@
 
 Just a personal website...
 
-Absolutely not done with this yet, working on getting the moon animation working at different widths.
+Absolutely not done with this yet, priority is getting it to work on smaller screens.
