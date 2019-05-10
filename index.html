@@ -60,6 +60,7 @@
             color: #fdfffc;
             animation: bounce 1s infinite alternate;
             -webkit-animation: bounce 1s infinite alternate;
+            filter: drop-shadow(0 0 8px #43435c);
         }
 
         .navbar {
@@ -507,58 +508,39 @@
             // var scrollPercent = scrollTop / scrollArea || 0;
             var scrollPercent = scrollTop / pageHeight || 0;
             moon.style.left = scrollPercent * window.innerWidth + 'px';
+            let moonLeft = moon.getBoundingClientRect()['x'];
+            let btnLeft1 = navbutton1.getBoundingClientRect()['x'];
+            let btnLeft2 = navbutton2.getBoundingClientRect()['x'];
+            let btnLeft3 = navbutton3.getBoundingClientRect()['x'];
+            let btnLeft4 = navbutton4.getBoundingClientRect()['x'];
+            let btnLeft5 = navbutton5.getBoundingClientRect()['x'];
             nanoIcon.style.opacity = (scrollPercent / 2)
             btcIcon.style.opacity = (scrollPercent / 2) - .4
-            if (scrollPixels > (window.innerWidth * .75)) {
-                //     navbutton1.style.visibility = 'visible';
-                // if (scrollPercent > 0.295) {
+            if (moonLeft > btnLeft1) {
                 navbutton1.style.visibility = 'visible';
             } else {
                 navbutton1.style.visibility = 'hidden';
             }
-            // if (scrollPixels > 670) {
-            //     navbutton2.style.visibility = 'visible';
-            // if (scrollPercent > 0.376) {
-            if (scrollPixels > (window.innerWidth * .945)) {
+            if (moonLeft > btnLeft2) {
                 navbutton2.style.visibility = 'visible';
             } else {
                 navbutton2.style.visibility = 'hidden';
             }
-            // if (scrollPixels > 830) {
-            //     navbutton3.style.visibility = 'visible';
-            // if (scrollPercent > 0.458) {
-            if (scrollPixels > (window.innerWidth * 1.148)) {
+            if (moonLeft > btnLeft3) {
                 navbutton3.style.visibility = 'visible';
             } else {
                 navbutton3.style.visibility = 'hidden';
             }
-            // if (scrollPercent > 0.538) {
-            if (scrollPixels > (window.innerWidth * 1.351)) {
+            if (moonLeft > btnLeft4) {
                 navbutton4.style.visibility = 'visible';
-                // if (scrollPixels > 985) {
-                //     navbutton4.style.visibility = 'visible';
             } else {
                 navbutton4.style.visibility = 'hidden';
             }
-            // if (scrollPercent > 0.613) {
-            if (scrollPixels > (window.innerWidth * 1.544)) {
+            if (moonLeft > btnLeft5) {
                 navbutton5.style.visibility = 'visible';
-                // if (scrollPixels > 1145) {
-                //     navbutton5.style.visibility = 'visible';
             } else {
                 navbutton5.style.visibility = 'hidden';
             }
-            // if (scrollPercent > 1.40) {
-            //   nanoIcon.style.visibility = 'visible';
-            // } else {
-            //   nanoIcon.style.visibility = 'hidden';
-            // }
-            // console.log('px dn: '+scrollPixels)
-            // console.log('pct dn: '+scrollPercent)
-            // console.log('width: '+window.innerWidth)
-            // console.log("vh:" + _1vh + ", vw:" + _1vw)
-            // console.log("moonRange: " + moonRange)
-            // console.log(scrollPixels/window.innerWidth)
         });
         // QR code donation modal
         nanoIcon.onclick = function() {
