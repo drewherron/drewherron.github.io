@@ -494,20 +494,16 @@
         var modalImg = document.getElementById("nanoAddress");
         var nanoCaption = document.getElementById("nanoCaption");
         var modalClose = document.getElementsByClassName("close")[0];
-        var windowHeight = window.innerHeight;
-        var windowWidth = window.innerWidth;
-        var scrollArea = 2300 - windowHeight;
+        // var windowHeight = window.innerHeight;
+        // var scrollArea = 2300 - windowHeight;
         var pageHeight = 3412;
         var moon = document.getElementsByClassName('moon')[0];
-        var moonRange = windowWidth + (windowWidth + (windowWidth * .2));
         window.addEventListener('scroll', function() {
-            let _1vh = Math.round(window.innerHeight / 100)
-            let _1vw = Math.round(window.innerWidth / 100)
-            var scrollPixels = Math.round(window.scrollY)
+            // var scrollPixels = Math.round(window.scrollY)
             var scrollTop = window.pageYOffset || window.scrollTop;
             // var scrollPercent = scrollTop / scrollArea || 0;
             var scrollPercent = scrollTop / pageHeight || 0;
-            moon.style.left = scrollPercent * window.innerWidth + 'px';
+            moon.style.left = scrollPercent * window.outerWidth + 'px';
             let moonLeft = moon.getBoundingClientRect()['x'];
             let btnLeft1 = navbutton1.getBoundingClientRect()['x'];
             let btnLeft2 = navbutton2.getBoundingClientRect()['x'];
@@ -515,7 +511,7 @@
             let btnLeft4 = navbutton4.getBoundingClientRect()['x'];
             let btnLeft5 = navbutton5.getBoundingClientRect()['x'];
             nanoIcon.style.opacity = (scrollPercent / 2)
-            btcIcon.style.opacity = (scrollPercent / 2) - .4
+            // btcIcon.style.opacity = (scrollPercent / 2) - .4
             if (moonLeft > btnLeft1) {
                 navbutton1.style.visibility = 'visible';
             } else {
