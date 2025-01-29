@@ -1,5 +1,5 @@
 # drewherron.github.io
 
-Just a personal website.
+Code for my personal website at [www.drewherron.com](https://www.drewherron.com).
 
-UPDATE: This is complete trash. It ended up being more of a coding exercise than a functional website. I'll be rewriting it from scratch soon.
+2025 update: I've deleted everything and started over. Eventually there will be content (t)here, when I have the time.
