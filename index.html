@@ -105,8 +105,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 800px;
+      width: 95%;
+      max-width: 960px;
       height: 80vh;
       border: 2px solid #999;
       border-radius: 6px;
@@ -123,8 +123,8 @@
     .pdf-content {
       flex: 1;
       background: #fff;
-      overflow: auto;
-      padding: 20px;
+      overflow: hidden;
+      padding: 0;
     }
 
     .overlay {
@@ -141,9 +141,48 @@
     .overlay.active {
       display: block;
     }
+
+    .close-btn, .download-btn {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 3px;
+      transition: background-color 0.2s;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .close-btn:hover {
+      background-color: #f25f58;
+      color: white;
+    }
+
+    .download-btn:hover {
+      background-color: #33c948;
+      color: white;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Overlay Background -->
+  <div id="overlay" class="overlay" onclick="closeResume()"></div>
+
+  <!-- PDF Window -->
+  <div id="pdfWindow" class="pdf-window">
+    <div class="terminal-header">
+      <span class="title">resume.pdf</span>
+      <div class="buttons-container">
+        <button id="downloadBtn" class="download-btn" onclick="downloadResume()" title="Download Resume">⬇</button>
+        <button id="closeBtn" class="close-btn" onclick="closeResume()" title="Close">✕</button>
+      </div>
+    </div>
+    <div class="pdf-content">
+      <iframe id="pdfFrame" src="drew_herron.pdf#toolbar=0&navpanes=0&scrollbar=0" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+  </div>
 
   <div class="terminal-window">
     <!-- Header / Title Bar -->
@@ -170,9 +209,39 @@ links  README.md
 
 <span style="background-color: #ffb700; color: #000;"> T480 </span> <span style="color: #0f0;">~/Documents/</span>
  <span style="color: #0f0;">drew $ ls links/</span>
-<a href="https://github.com/drewherron">GitHub</a><a href="https://www.linkedin.com/in/drew-herron/">LinkedIn</a>
+<a href="https://github.com/drewherron">GitHub</a><a href="https://www.linkedin.com/in/drew-herron/">LinkedIn</a><a href="#" onclick="openResume()">resume.pdf</a>
       </pre>
     </div>
   </div>
+
+  <script>
+    function openResume() {
+      document.getElementById('overlay').classList.add('active');
+      document.getElementById('pdfWindow').classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeResume() {
+      document.getElementById('overlay').classList.remove('active');
+      document.getElementById('pdfWindow').classList.remove('active');
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    function downloadResume() {
+      const link = document.createElement('a');
+      link.href = 'drew_herron.pdf';
+      link.download = 'drew_herron.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Close on ESC key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeResume();
+      }
+    });
+  </script>
 </body>
 </html>
